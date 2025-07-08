@@ -19,3 +19,18 @@ const savedName = localStorage.getItem("username");
 if (savedName) {
   document.getElementById("saved-name").innerHTML = `${savedName}`;
 }
+
+let secondi = Number(sessionStorage.getItem("secondi"));
+
+if (!secondi) {
+  secondi = 0;
+  sessionStorage.setItem("secondi", secondi);
+}
+
+document.getElementById("timer").textContent = secondi;
+
+setInterval(() => {
+  secondi++;
+  sessionStorage.setItem("secondi", secondi);
+  document.getElementById("timer").textContent = secondi;
+}, 1000);
